@@ -1,0 +1,55 @@
+import random
+
+names = ['Аня','Ваня','Юля','Дима','Саша','Глаша','Егор','Денис','Вася','Миша']
+last_names = ['Анин(а)','Ванин(а)','Юлин(а)','Димин(а)','Сашин(а)','Глашин(а)','Егорин(а)',\
+'Денисин(а)','Васяин(а)','Мишаин(а)']
+subjects = ['Русский','Математика','Физика']
+lst_mark = [2,3,4,5]
+balls = []
+end_dct = {}
+new_names = []
+
+def marks():
+    time = random.randint(5,10)
+    lst = []
+    for i in range(time):
+        mark = random.choice(lst_mark)
+        lst.append(mark)
+    return lst
+
+
+for i in range(2):
+    name = f'{random.choice(names)} {random.choice(last_names)}'
+    new_names.append(name)
+    diary = {}
+    
+    
+    for j in subjects:
+        ner = marks()
+        
+        diary[j] = ner
+        ball = sum(ner) / len(ner)
+        diary[f'Баллы {j}'] = ball
+        
+        
+    end_dct[name] = diary
+    # print(diary)
+
+    
+
+
+n = 0
+h = 0
+for i in end_dct:
+
+
+    print(f'{new_names[n]}:')
+
+    print()
+    for j in subjects:
+        print(f'{j}: {end_dct[new_names[n]][j]}     Средний балл: {end_dct[new_names[n]][f'Баллы {j}']:.2f}')
+        h += 1
+    print()
+
+    print('*'*20)
+    n += 1
